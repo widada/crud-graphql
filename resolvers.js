@@ -2,19 +2,14 @@ const BookModel = require('./models/Book');
 
 module.exports = {
   Query: {
-    books: async (_, args) => {
-      if (args._id) {
-        return await BookModel.findById(args._id);
-      }
-      return await BookModel.find({});
-    }
+      getAllBooks: async (_, args) => await BookModel.find({}),
+      getBook: async (_, args) => await BookModel.findById(args._id)
   },
 
   Mutation: {
     createBook: async (_, args) => {
       const book = new BookModel(args);
       await book.save();
-      console.log(book);
       return book;
     },
 

@@ -11,7 +11,8 @@ const typeDefs = gql`
   }
   
   type Query {
-    books(_id: String): [Book]!
+    getAllBooks: [Book]!,
+    getBook(_id: String!): Book
   }
 
   type Mutation {
